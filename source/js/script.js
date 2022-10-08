@@ -48,33 +48,34 @@ const car = {
 };
 
 const timer = {
-    currentTime: new Date(),
     hours: new Date().getHours(),
-    minutes: new Date().getHours(),
+    minutes: new Date().getMinutes(),
     seconds: new Date().getSeconds(),
 
     showTime: () => {
         console.log(`${timer.hours}:${timer.minutes}:${timer.seconds}`);
     },
 
-    addHours: (h) => {
-        const result = timer.currentTime.setTime(timer.currentTime.getTime() + (h * 60 * 60 * 1000));
-        console.log(timer.currentTime.getTime());
-        console.log(result);    
-        // timer.currentTime = timer.currentTime.setHours(timer.currentTime.getHours() + h); 
-        // console.log(timer.currentTime.setHours(timer.currentTime.getHours() + h));
-        // console.log(timer.currentTime.setTime(timer.currentTime.getTime() + h * 60 * 60 * 1000));
-        // console.log(`${timer.hours}:${timer.minutes}:${timer.seconds}`);
-    }
+    changeHours: (h) => {
+        // h * 60 * 60 * 1000 for minutes
+        const addResult = new Date(new Date().getTime() + (h * 3600 * 1000));
+        const subResult = new Date(new Date().getTime() - ((-h) * 3600 * 1000));
+        h <= 0 ? console.log(`Minused ${h} hours.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
+        : console.log(`Added ${h} hours.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+    },
+
+    changeMinutes: (m) => {
+        const addResult = new Date(new Date().getTime() + (m * 24 * 60 * 1000));
+        const subResult = new Date(new Date().getTime() - ((-m) * 24 * 60 * 1000));
+        m <= 0 ? console.log(`Minused ${m} minutes.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
+        : console.log(`Added ${m} minutes.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+    },
+
+    changeSeconds: (s) => {
+        const addResult = new Date(new Date().getTime() + (s * 1000));
+        const subResult = new Date(new Date().getTime() - ((-s) * 1000));
+        s <= 0 ? console.log(`Minused ${s} seconds.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
+        : console.log(`Added ${s} seconds.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+    },
 };
 
-// console.log(timer.time);
-
-// console.log(new Date().getHours())
-
-timer.showTime();
-timer.addHours(20);
-timer.showTime();
-// timer.showTime();
-
-// console.log(new Date().getTime());
