@@ -1,3 +1,5 @@
+'use strict';
+// Car methods : showInfo(), addDriver(name), checkDriver(name), showDriversList(), calcTimeFuel()
 const car = {
     manufacturer: 'Nissan',
     model: 'Skyline GTR-98',
