@@ -57,25 +57,54 @@ const timer = {
     },
 
     changeHours: (h) => {
-        // h * 60 * 60 * 1000 for minutes
         const addResult = new Date(new Date().getTime() + (h * 3600 * 1000));
         const subResult = new Date(new Date().getTime() - ((-h) * 3600 * 1000));
-        h <= 0 ? console.log(`Minused ${h} hours.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
-        : console.log(`Added ${h} hours.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+        h <= 0 ? console.log(`Minused ${h} hours.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) :
+            console.log(`Added ${h} hours.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
     },
 
     changeMinutes: (m) => {
-        const addResult = new Date(new Date().getTime() + (m * 24 * 60 * 1000));
-        const subResult = new Date(new Date().getTime() - ((-m) * 24 * 60 * 1000));
-        m <= 0 ? console.log(`Minused ${m} minutes.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
-        : console.log(`Added ${m} minutes.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+        const addResult = new Date(new Date().getTime() + (m * 60 * 1000));
+        const subResult = new Date(new Date().getTime() - ((-m) * 60 * 1000));
+        m <= 0 ? console.log(`Minused ${m} minutes.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) :
+            console.log(`Added ${m} minutes.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
     },
 
     changeSeconds: (s) => {
         const addResult = new Date(new Date().getTime() + (s * 1000));
         const subResult = new Date(new Date().getTime() - ((-s) * 1000));
-        s <= 0 ? console.log(`Minused ${s} seconds.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) 
-        : console.log(`Added ${s} seconds.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
+        s <= 0 ? console.log(`Minused ${s} seconds.Result:${subResult.getHours()}:${subResult.getMinutes()}:${subResult.getSeconds()}`) :
+            console.log(`Added ${s} seconds.Result:${addResult.getHours()}:${addResult.getMinutes()}:${addResult.getSeconds()}`);
     },
 };
 
+const fractionalMathAdd = (numOne, numTwo) => {
+    if (numOne.denominator !== numTwo.denominator) {
+        numOne.denominator *= numTwo.denominator;
+        numOne.numerator *= numOne.denominator;
+        numTwo.denominator = numOne.denominator; 
+        numTwo.numerator *= numTwo.denominator;
+        console.log(numOne.numerator + numTwo.numerator);
+        console.log('-');
+        console.log(numOne.denominator);
+    } else if (numOne.denominator === numTwo.denominator) {
+        console.log(numOne.numerator + numTwo.numerator);
+        console.log('-');
+        console.log(numTwo.denominator);
+    }
+};
+
+const fractionalNumOne = {
+    numerator: 4,
+    denominator: 11,
+};
+
+const fractionalNumTwo = {
+    numerator: 11,
+    denominator: 5,
+};
+
+// console.log(fractionalNumOne.denominator % fractionalNumOne.numerator);
+// console.log(fractionalNumOne.numerator);
+// console.log(fractionalNumOne.denominator);
+fractionalMathAdd(fractionalNumOne, fractionalNumTwo);
